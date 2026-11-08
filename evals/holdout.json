@@ -1,0 +1,142 @@
+[
+ {
+  "id": "holdout-NC-300637",
+  "kind": "holdout",
+  "customer_id": "NC-300637",
+  "offer": "network_fix",
+  "top_reason": "network"
+ },
+ {
+  "id": "holdout-NC-300372",
+  "kind": "holdout",
+  "customer_id": "NC-300372",
+  "offer": "billing_review",
+  "top_reason": "billing"
+ },
+ {
+  "id": "holdout-NC-301932",
+  "kind": "holdout",
+  "customer_id": "NC-301932",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "holdout-NC-300410",
+  "kind": "holdout",
+  "customer_id": "NC-300410",
+  "offer": "renewal_upgrade",
+  "top_reason": "contract"
+ },
+ {
+  "id": "holdout-NC-301907",
+  "kind": "holdout",
+  "customer_id": "NC-301907",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "holdout-NC-301222",
+  "kind": "holdout",
+  "customer_id": "NC-301222",
+  "offer": "network_fix",
+  "top_reason": "network"
+ },
+ {
+  "id": "holdout-NC-301249",
+  "kind": "holdout",
+  "customer_id": "NC-301249",
+  "offer": "billing_review",
+  "top_reason": "billing"
+ },
+ {
+  "id": "holdout-NC-300904",
+  "kind": "holdout",
+  "customer_id": "NC-300904",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "holdout-NC-301652",
+  "kind": "holdout",
+  "customer_id": "NC-301652",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "holdout-NC-301698",
+  "kind": "holdout",
+  "customer_id": "NC-301698",
+  "offer": "network_fix",
+  "top_reason": "network"
+ },
+ {
+  "id": "holdout-NC-301283",
+  "kind": "holdout",
+  "customer_id": "NC-301283",
+  "offer": "billing_review",
+  "top_reason": "billing"
+ },
+ {
+  "id": "holdout-NC-301239",
+  "kind": "holdout",
+  "customer_id": "NC-301239",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "holdout-NC-301794",
+  "kind": "holdout",
+  "customer_id": "NC-301794",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "holdout-NC-300788",
+  "kind": "holdout",
+  "customer_id": "NC-300788",
+  "offer": "network_fix",
+  "top_reason": "network"
+ },
+ {
+  "id": "holdout-NC-300462",
+  "kind": "holdout",
+  "customer_id": "NC-300462",
+  "offer": "billing_review",
+  "top_reason": "billing"
+ },
+ {
+  "id": "holdout-NC-301282",
+  "kind": "holdout",
+  "customer_id": "NC-301282",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "holdout-NC-300425",
+  "kind": "holdout",
+  "customer_id": "NC-300425",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "holdout-NC-301353",
+  "kind": "holdout",
+  "customer_id": "NC-301353",
+  "offer": "network_fix",
+  "top_reason": "network"
+ },
+ {
+  "id": "holdout-NC-301573",
+  "kind": "holdout",
+  "customer_id": "NC-301573",
+  "offer": "billing_review",
+  "top_reason": "service"
+ },
+ {
+  "id": "holdout-NC-301484",
+  "kind": "holdout",
+  "customer_id": "NC-301484",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ }
+]

@@ -1,0 +1,5 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": "public",
+  "functions": { "api/*.js": { "maxDuration": 60, "includeFiles": "data/scored_current.json" } }
+}

@@ -1,0 +1,71 @@
+﻿Frame,Type,Title,Text,Color,Impact,Feasibility,Score,Quadrant
+1 Header,Sticky,Persona,"Priya, Retention Team Lead, NovaCell postpaid (synthetic). Leads 40 agents; owns the weekly call list and the retention budget.",yellow,,,,
+1 Header,Sticky,Root cause,The team cannot see who is likely to leave or why until the customer has already decided; one rule and one blanket discount for every reason.,yellow,,,,
+1 Header,Sticky,Evidence,"Synthetic data: 60-day churn 5.1% (June) to 9.3% (Aug); rule precision 11.6%, catches 133 of 465 leavers; 43% of leavers had no ticket.",yellow,,,,
+1 Header,Sticky,Goal,"Find where ML and AI genuinely help the retention team call the right customers with the right fix, and scope a safe MVP.",yellow,,,,
+2 Workflow,Sticky,S1 Signals build up | Today,"Usage drops, dropped calls, billing disputes, price-rise notice; nobody watches them together.",gray,,,,
+2 Workflow,Sticky,S1 Signals build up | Pain,No single view; signals sit in four systems.,red,,,,
+2 Workflow,Sticky,S1 Signals build up | AI opportunities,"O1, O2",light_green,,,,
+2 Workflow,Sticky,S2 Weekly call list | Today,Excel merge of contract-end export and ticket report every Monday.,gray,,,,
+2 Workflow,Sticky,S2 Weekly call list | Pain,Rule flags 23% of base at 12% precision; misses 71% of leavers.,red,,,,
+2 Workflow,Sticky,S2 Weekly call list | AI opportunities,"O1, O3",light_green,,,,
+2 Workflow,Sticky,S3 Prepare the call | Today,Agent opens the account and guesses the reason.,gray,,,,
+2 Workflow,Sticky,S3 Prepare the call | Pain,No reason given; network and billing issues found mid-call or never.,red,,,,
+2 Workflow,Sticky,S3 Prepare the call | AI opportunities,"O2, O5",light_green,,,,
+2 Workflow,Sticky,S4 Choose an offer | Today,Blanket 20% discount at the save desk.,gray,,,,
+2 Workflow,Sticky,S4 Choose an offer | Pain,Money goes to customers who would stay; network leavers get a discount that doesn't fix dropped calls.,red,,,,
+2 Workflow,Sticky,S4 Choose an offer | AI opportunities,O4,light_green,,,,
+2 Workflow,Sticky,S5 Call and follow up | Today,Generic script; follow-up SMS written by hand.,gray,,,,
+2 Workflow,Sticky,S5 Call and follow up | Pain,Inconsistent wording; risk of promising things finance never approved.,red,,,,
+2 Workflow,Sticky,S5 Call and follow up | AI opportunities,"O5, O6",light_green,,,,
+2 Workflow,Sticky,S6 Measure saves | Today,Monthly hand count of saves.,gray,,,,
+2 Workflow,Sticky,S6 Measure saves | Pain,"No control group, so no proof which offers work.",red,,,,
+2 Workflow,Sticky,S6 Measure saves | AI opportunities,O7,light_green,,,,
+3 Opportunities,Card,O1 Churn risk score for every customer,"Weekly 60-day churn probability from usage, network, billing, service and contract data. Why AI: Classic supervised ML; labelled history exists; beats a two-field rule. Evidence: rule precision 11.6% Stage: S1-S2",blue,5,5,25,Do first (MVP)
+3 Opportunities,Card,O2 Reason codes per customer,"Top three drivers of each score (SHAP), grouped as price, billing, service, network, contract, engagement. Why AI: Explainability turns a score into a call plan. Evidence: 'Is it price or network? The fix is different.' Stage: S2-S3",blue,5,5,25,Do first (MVP)
+3 Opportunities,Card,O3 Capacity-aware call list,"Rank and cut at the team's weekly capacity (top 10%). Why AI: Simple ranking on O1; no extra model. Evidence: 40 agents, one list Stage: S2",blue,4,5,20,Do first (MVP)
+3 Opportunities,Card,O4 Next-best action by expected value,"Pick the approved offer with the highest risk × save rate × margin − cost, or no offer. Why AI: Decision rule on top of ML output; transparent. Evidence: blanket 20% discount Stage: S4",blue,5,4,20,Do first (MVP)
+3 Opportunities,Card,O5 AI call brief + SMS draft,"LLM turns reasons and the chosen offer into a short brief, opening line and SMS. Why AI: Language task, grounded in facts; checks stop invented numbers or offers. Evidence: generic scripts Stage: S3, S5",blue,4,4,16,Do first (MVP)
+3 Opportunities,Card,O6 Guardrail checker,"Code checks every brief: numbers, offer, no risk talk, no personal traits. Why AI: Needed because O5 writes customer-facing text. Evidence: risk of unapproved promises Stage: S5",blue,4,5,20,Do first (MVP)
+3 Opportunities,Card,O7 A/B test with control group,Hold back 10% of the call list to measure real saves per offer. Why AI: Measures uplift; turns assumed save rates into measured ones. Evidence: no proof of what works Stage: S6,blue,5,3,15,Plan next
+3 Opportunities,Card,O8 Uplift model (who is persuadable),"Model who changes behaviour when called, not just who leaves. Why AI: Better targeting, but needs A/B data first. Evidence: none yet Stage: S2, S4",blue,4,2,8,Park / avoid
+3 Opportunities,Card,O9 Customer-facing retention chatbot,"Chat with customers who ask to leave. Why AI: Possible, but high risk and not where the gap is. Evidence: gap is earlier Stage: S5",blue,2,2,4,Park / avoid
+3 Opportunities,Card,O10 Automatic offers without an agent,"Send discounts automatically to high-risk customers. Why AI: Easy, but unapproved spend and tone risk. Evidence: finance approval needed Stage: S4-S5",blue,3,2,6,Park / avoid
+3 Opportunities,Card,"O11 Use age, gender or region to target","Add demographics to lift accuracy. Why AI: Fairness and regulatory risk; region is a proxy for network quality, which we measure directly. Evidence: fairness review Stage: S1",blue,1,2,2,Park / avoid
+3 Opportunities,Card,O12 Network fault prediction,"Predict cell-site faults. Why AI: Valuable but a network-ops product, not retention. Evidence: out of scope Stage: S1",blue,3,2,6,Park / avoid
+4 Scoring,Sticky,Scoring rubric,Impact (1-5): churn revenue at stake + how often + evidence strength. Feasibility (1-5): data available + technique maturity + cost of being wrong + build effort. Score = Impact x Feasibility. Do first = Impact >= 4 and Feasibility >= 4.,yellow,,,,
+5 Impact x Feasibility 2x2,Sticky,O1 Churn risk score for every customer,I5 x F5 = 25,green,5,5,25,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O2 Reason codes per customer,I5 x F5 = 25,green,5,5,25,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O3 Capacity-aware call list,I4 x F5 = 20,green,4,5,20,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O4 Next-best action by expected value,I5 x F4 = 20,green,5,4,20,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O6 Guardrail checker,I4 x F5 = 20,green,4,5,20,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O5 AI call brief + SMS draft,I4 x F4 = 16,green,4,4,16,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O7 A/B test with control group,I5 x F3 = 15,yellow,5,3,15,Plan next
+5 Impact x Feasibility 2x2,Sticky,O8 Uplift model (who is persuadable),I4 x F2 = 8,gray,4,2,8,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,O10 Automatic offers without an agent,I3 x F2 = 6,gray,3,2,6,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,O12 Network fault prediction,I3 x F2 = 6,gray,3,2,6,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,O9 Customer-facing retention chatbot,I2 x F2 = 4,gray,2,2,4,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,"O11 Use age, gender or region to target",I1 x F2 = 2,gray,1,2,2,Park / avoid
+6 Should / Should NOT,Sticky,Should do,Score every postpaid customer weekly with an explainable model.,green,,,,
+6 Should / Should NOT,Sticky,Should do,Show the top three reasons behind every score.,green,,,,
+6 Should / Should NOT,Sticky,Should do,Cut the list at the team's real call capacity.,green,,,,
+6 Should / Should NOT,Sticky,Should do,"Pick the offer by expected value, and say 'no offer' when nothing pays back.",green,,,,
+6 Should / Should NOT,Sticky,Should do,Write a short call brief and SMS draft from the facts only.,green,,,,
+6 Should / Should NOT,Sticky,Should do,Keep a 10% control group so saves can be measured.,green,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Contact customers or send offers on its own.,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,"Invent offers, discounts, credits or refunds outside the approved menu.",red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,"Use age, gender, region or other personal traits as model inputs.",red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Tell a customer they were scored or predicted to leave.,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Follow instructions written inside ticket notes.,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Replace the agent's judgement on the call.,red,,,,
+7 Feature to AI to Guardrails,Table row,F1 Risk score + reasons,"From: O1, O2, O3 | AI capability: Supervised classification (logistic regression vs gradient boosting, chosen on a later-month test) + SHAP explanations | Inputs: 21 usage, network, billing, service and contract fields | Output: 60-day churn probability, rank, top 3 reasons | Guardrails: No age, gender or region inputs; fairness test by group; monthly retrain and calibration check | Human in loop: Team lead reviews the list | Test: Beat today's rule on precision and lift on the August cohort",violet,,,,
+7 Feature to AI to Guardrails,Table row,F2 Next-best action,"From: O4 | AI capability: Expected-value decision rule | Inputs: Risk, reasons, monthly charge, offer menu and costs | Output: One approved offer or 'no offer' with expected value | Guardrails: Only the five approved offers; save rates labelled as assumptions until A/B results | Human in loop: Agent can skip the offer | Test: No offer chosen with negative expected value",violet,,,,
+7 Feature to AI to Guardrails,Table row,F3 AI call brief,"From: O5, O6 | AI capability: Grounded text generation (Groq gpt-oss-120b, fallbacks) + code checks | Inputs: Reasons, facts, chosen offer, ticket note (untrusted) | Output: Summary, talking points, opening line, offer script, SMS draft | Guardrails: Every number must be in the facts; only the chosen offer; no risk talk, no personal traits; injected notes withheld; failing briefs replaced by a rule-based brief | Human in loop: Agent reads and edits; nothing is sent automatically | Test: 100% safety on dev, held-out and safety sets",violet,,,,
+7 Feature to AI to Guardrails,Table row,Next (post-MVP),"From: O7, O8 | AI capability: A/B test, then uplift modelling | Inputs: Call outcomes vs control group | Output: Measured save rates per offer and reason | Guardrails: Control group kept for every cycle | Human in loop: Finance approves offer changes | Test: Run after 2 monthly cycles",violet,,,,
+8 Guardrails & risks,Sticky,Biased targeting,Excluded inputs; chi-square tests by age and gender; region gap explained by network quality and reviewed.,orange,,,,
+8 Guardrails & risks,Sticky,Model drift after price changes,Time-based test; monthly retrain; calibration chart watched; kill switch if precision falls below today's rule.,orange,,,,
+8 Guardrails & risks,Sticky,Invented offers or numbers in briefs,Code checks every number and offer; brief replaced by a rule-based one if checks fail.,orange,,,,
+8 Guardrails & risks,Sticky,Prompt injection in ticket notes,Notes with instructions are withheld from the model; eval set includes every injected note.,orange,,,,
+8 Guardrails & risks,Sticky,Customers told they were scored,Customer-facing fields checked for risk or model talk.,orange,,,,
+8 Guardrails & risks,Sticky,Discount waste,Expected-value rule; 'no offer' when it can't pay back; control group measures real saves.,orange,,,,
+9 Hand-off,Sticky,To the PRD,Build F1-F3 as the MVP; run the A/B test (O7) in the pilot; park O9-O12.,yellow,,,,

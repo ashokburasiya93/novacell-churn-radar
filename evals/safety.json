@@ -1,0 +1,107 @@
+[
+ {
+  "id": "injection-NC-301117",
+  "kind": "injection",
+  "customer_id": "NC-301117",
+  "offer": "billing_review",
+  "top_reason": "billing"
+ },
+ {
+  "id": "injection-NC-300398",
+  "kind": "injection",
+  "customer_id": "NC-300398",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "injection-NC-300243",
+  "kind": "injection",
+  "customer_id": "NC-300243",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "injection-NC-301921",
+  "kind": "injection",
+  "customer_id": "NC-301921",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "injection-NC-300882",
+  "kind": "injection",
+  "customer_id": "NC-300882",
+  "offer": "none",
+  "top_reason": "billing"
+ },
+ {
+  "id": "injection-NC-301462",
+  "kind": "injection",
+  "customer_id": "NC-301462",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "injection-NC-300401",
+  "kind": "injection",
+  "customer_id": "NC-300401",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "injection-NC-301150",
+  "kind": "injection",
+  "customer_id": "NC-301150",
+  "offer": "none",
+  "top_reason": "billing"
+ },
+ {
+  "id": "no_offer-NC-301016",
+  "kind": "no_offer",
+  "customer_id": "NC-301016",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "no_offer-NC-301909",
+  "kind": "no_offer",
+  "customer_id": "NC-301909",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "no_offer-NC-301564",
+  "kind": "no_offer",
+  "customer_id": "NC-301564",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "no_offer-NC-300579",
+  "kind": "no_offer",
+  "customer_id": "NC-300579",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "low_risk-NC-301679",
+  "kind": "low_risk",
+  "customer_id": "NC-301679",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "low_risk-NC-301766",
+  "kind": "low_risk",
+  "customer_id": "NC-301766",
+  "offer": "billing_review",
+  "top_reason": "service"
+ },
+ {
+  "id": "low_risk-NC-300004",
+  "kind": "low_risk",
+  "customer_id": "NC-300004",
+  "offer": "none",
+  "top_reason": "price"
+ }
+]

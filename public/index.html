@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NovaCell Churn Radar</title>
+<meta name="description" content="Weekly churn risk call list for NovaCell's retention team: who to call, why, which offer pays back, and a checked AI call brief. Synthetic data.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230f766e'/><circle cx='16' cy='16' r='9' stroke='white' stroke-width='2.5' fill='none'/><path d='M16 16l6-5' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>">
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--ink:#14181f;--muted:#5b6472;--line:#e3e6eb;--brand:#0f766e;--brand-soft:#e6f4f2;--ok:#15803d;--ok-soft:#e8f6ec;--warn:#b45309;--warn-soft:#fdf3e4;--bad:#b91c1c;--bad-soft:#fdecec;--info:#1d4ed8;--info-soft:#e9effd;--shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08)}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1216;--panel:#171b21;--ink:#e7eaee;--muted:#9aa4b2;--line:#2a313b;--brand:#2dd4bf;--brand-soft:#11312e;--ok:#4ade80;--ok-soft:#12291a;--warn:#fbbf24;--warn-soft:#2d230f;--bad:#f87171;--bad-soft:#2f1515;--info:#93b4ff;--info-soft:#18213a;--shadow:none}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14.5px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap;position:sticky;top:0;z-index:5}
+.logo{display:flex;align-items:center;gap:10px;font-weight:650;font-size:16px}.logo svg{width:30px;height:30px}.logo small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.chips{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;font-size:12px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--bg);color:var(--muted);white-space:nowrap}.chip b{color:var(--ink);font-weight:600}
+.dot::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--muted);margin-right:6px;vertical-align:1px}.dot.live::before{background:var(--ok)}.dot.down::before{background:var(--bad)}
+nav.tabs{display:flex;gap:4px;padding:0 18px;background:var(--panel);border-bottom:1px solid var(--line)}
+nav.tabs button{border:0;background:none;padding:10px 14px;font:inherit;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent}
+nav.tabs button.on{color:var(--ink);border-bottom-color:var(--brand);font-weight:600}
+main{max-width:1240px;margin:0 auto;padding:16px 18px 40px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:14px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
+.kpi .v{font-size:22px;font-weight:700}.kpi .l{color:var(--muted);font-size:12.5px}
+.grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.card h2{font-size:15px;margin:0;padding:12px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card h2 small{color:var(--muted);font-weight:400}
+.filters{display:flex;gap:8px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--line)}
+select,input{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:5px 8px}
+.list{max-height:68vh;overflow:auto}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--panel)}
+tr.row{cursor:pointer}tr.row td:nth-child(2) b{white-space:nowrap}tr.row:hover{background:var(--bg)}tr.row.sel{background:var(--brand-soft)}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:6px;padding:1px 6px;margin-right:4px}
+.c-price{background:#fde8e8;color:#9b1c1c}.c-billing{background:#fdf3e4;color:#92400e}.c-service{background:#ede9fe;color:#5b21b6}.c-network{background:#e0f2fe;color:#075985}.c-contract{background:#e8f6ec;color:#166534}.c-engagement{background:#f1f5f9;color:#334155}
+@media (prefers-color-scheme:dark){.cat{background:var(--bg)!important;color:var(--ink)!important;border:1px solid var(--line)}}
+.risk{font-weight:700}.risk.high{color:var(--bad)}.risk.medium{color:var(--warn)}.risk.low{color:var(--ok)}
+.muted{color:var(--muted)}.small{font-size:12.5px}
+.detail{padding:14px}.detail h3{margin:14px 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:3px}.bar i{display:block;height:100%;background:var(--brand)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 14px;font-size:13px}.facts div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed var(--line);padding:2px 0}
+.btn{border:1px solid var(--brand);background:var(--brand);color:#fff;border-radius:8px;padding:7px 12px;font:inherit;font-weight:600;cursor:pointer}
+.btn.ghost{background:none;color:var(--brand)}.btn:disabled{opacity:.6;cursor:wait}
+.brief{border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:10px;background:var(--bg)}
+.brief .k{font-size:12px;color:var(--muted);font-weight:600;margin-top:8px}
+.pill{border-radius:999px;padding:2px 9px;font-weight:600;font-size:12px}.p-ok{background:var(--ok-soft);color:var(--ok)}.p-warn{background:var(--warn-soft);color:var(--warn)}.p-bad{background:var(--bad-soft);color:var(--bad)}.p-info{background:var(--info-soft);color:var(--info)}
+.note{margin-top:8px;padding:8px 10px;border-radius:8px;font-size:13px;background:var(--warn-soft)}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px}
+.mbody{padding:12px 14px}
+svg text{fill:var(--muted);font-size:11px}
+.foot{margin-top:18px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f766e"/><circle cx="16" cy="16" r="9" stroke="white" stroke-width="2.5" fill="none"/><path d="M16 16l6-5" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <div>NovaCell Churn Radar<small>Retention call list · snapshot 31 Oct 2026 · synthetic data</small></div></div>
+  <div class="chips" id="chips"><span class="chip">Loading models…</span></div>
+</header>
+<nav class="tabs"><button class="on" data-tab="list">Call list</button><button data-tab="model">How the model was chosen</button></nav>
+<main>
+  <section id="tab-list">
+    <div class="kpis" id="kpis"></div>
+    <div class="grid">
+      <div class="card">
+        <h2>This week's call list <small id="listnote"></small></h2>
+        <div class="filters">
+          <select id="fScope"><option value="call">Call list (top 10%)</option><option value="all">All 2,000 customers</option></select>
+          <select id="fCat"><option value="">Any top reason</option></select>
+          <select id="fOffer"><option value="">Any action</option></select>
+          <input id="fId" placeholder="Customer ID" size="11" aria-label="Find a customer ID">
+        </div>
+        <div class="list"><table><thead><tr><th>#</th><th>Customer</th><th class="num">Risk</th><th>Top reason</th><th>Next best action</th><th class="num">Value</th></tr></thead><tbody id="rows"></tbody></table></div>
+      </div>
+      <div class="card" id="detail"><div class="empty">Pick a customer to see why they may leave, which offer pays back, and a checked call brief.</div></div>
+    </div>
+    <p class="foot">How it works: a logistic regression model scores every postpaid customer each week; SHAP values turn the score into the top three reasons; an expected-value rule (risk × save rate × 24-month margin − cost) picks the approved offer or none; the AI only writes the call brief from those facts, and code checks every brief before it is shown. Age, gender and region are never model inputs. All customers, numbers and notes are synthetic.</p>
+  </section>
+  <section id="tab-model" hidden></section>
+</main>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const pct = (x, d = 0) => (x * 100).toFixed(d) + "%";
+const money = (x) => (x < 0 ? "−$" : "$") + Math.abs(x).toFixed(0);
+let DATA, MODEL, selected = null;
+const LABELS = { monthly_charge: "Monthly charge ($)", tenure_months: "Customer for (months)", contract_type: "Contract", contract_end_days: "Contract ends in (days)", plan: "Plan", lines_on_account: "Lines", autopay: "Autopay", device_instalment_months_left: "Instalment months left", device_age_months: "Phone age (months)", data_gb_3m_avg: "Data / month (GB)", data_trend_pct: "Data trend (%)", overage_3m_usd: "Overage 3m ($)", dropped_call_rate_pct: "Dropped calls (%)", home_download_mbps: "Home speed (Mbps)", support_tickets_90d: "Tickets 90d", unresolved_tickets: "Unresolved tickets", billing_disputes_90d: "Billing disputes 90d", last_nps: "Last NPS", app_logins_30d: "App logins 30d", late_payments_12m: "Late payments 12m", roaming_trips_12m: "Roaming trips 12m", price_rise_notice: "Price-rise notice", competitor_promo_area: "Competitor promo nearby" };
+
+document.querySelectorAll("nav.tabs button").forEach((b) => b.onclick = () => {
+  document.querySelectorAll("nav.tabs button").forEach((x) => x.classList.toggle("on", x === b));
+  $("#tab-list").hidden = b.dataset.tab !== "list"; $("#tab-model").hidden = b.dataset.tab !== "model";
+});
+
+async function health() {
+  try {
+    const h = await (await fetch("/api/health")).json();
+    const live = h.keys.groq || h.keys.openrouter;
+    $("#chips").innerHTML = `<span class="chip">Risk model <b>${esc(MODEL?.chosen === "logistic_regression" ? "Logistic regression" : "Gradient boosting")}</b></span>
+      <span class="chip dot ${h.keys.groq ? "live" : "down"}">Brief writer <b>${esc(h.models.primary.model.replace("openai/", ""))}</b> · Groq</span>
+      <span class="chip dot ${h.keys.openrouter ? "live" : "down"}">Fallback <b>${esc(h.models.secondary.model.replace("openai/", ""))}</b> → <b>${esc(h.models.fallback.model.split("/").pop().replace(":free", ""))}</b></span>`;
+    if (!live) $("#chips").insertAdjacentHTML("beforeend", `<span class="chip">AI briefs offline: rule-based briefs only</span>`);
+  } catch { $("#chips").innerHTML = `<span class="chip dot down">API unreachable</span>`; }
+}
+
+function kpis() {
+  const cur = MODEL.current, m = MODEL[MODEL.chosen], r = MODEL.rule_baseline;
+  const k = [
+    [cur.n.toLocaleString(), "postpaid customers scored this week"],
+    [cur.call_list_size, `on the call list (top ${pct(MODEL.capacity)} by risk)`],
+    [Math.round(cur.expected_churners_in_call_list), "expected leavers in the call list without action"],
+    [`${m.top10.lift}× vs ${r.lift}×`, "lift: model's top 10% vs today's call rule (Aug test)"],
+    [cur.no_offer_in_call_list, "on the list where no offer pays back: service call only"],
+  ];
+  $("#kpis").innerHTML = k.map(([v, l]) => `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+}
+
+function filters() {
+  const cats = [...new Set(DATA.customers.flatMap((c) => c.reasons.map((r) => r[0])))].sort();
+  $("#fCat").insertAdjacentHTML("beforeend", cats.map((c) => `<option value="${c}">${c}</option>`).join(""));
+  $("#fOffer").insertAdjacentHTML("beforeend", Object.entries(DATA.offers).map(([k, o]) => `<option value="${k}">${esc(o.name.split(":")[0])}</option>`).join("") + `<option value="none">No offer (service call)</option>`);
+  ["#fScope", "#fCat", "#fOffer"].forEach((s) => $(s).onchange = render);
+  $("#fId").oninput = render;
+}
+
+function render() {
+  const scope = $("#fScope").value, cat = $("#fCat").value, off = $("#fOffer").value, q = $("#fId").value.trim().toUpperCase();
+  let rows = DATA.customers.filter((c) => (scope === "all" || c.call) && (!cat || c.reasons[0]?.[0] === cat) && (!off || (c.offer || "none") === off) && (!q || c.id.includes(q)));
+  $("#listnote").textContent = `${rows.length.toLocaleString()} shown`;
+  rows = rows.slice(0, 400);
+  $("#rows").innerHTML = rows.map((c) => `<tr class="row${selected === c.id ? " sel" : ""}" data-id="${c.id}">
+    <td class="muted">${c.rank}</td><td><b>${c.id}</b><div class="muted small">${esc(c.plan)} · $${c.charge.toFixed(2)}</div></td>
+    <td class="num risk ${c.band}">${pct(c.p)}</td>
+    <td>${c.reasons[0] ? `<span class="cat c-${c.reasons[0][0]}">${c.reasons[0][0]}</span><span class="small">${esc(c.reasons[0][1])}</span>` : "<span class=muted>—</span>"}</td>
+    <td class="small">${c.offer ? esc(DATA.offers[c.offer].name.split(":")[0]) : '<span class="muted">No offer: service call</span>'}</td>
+    <td class="num small">${c.ev != null ? money(c.ev) : "—"}</td></tr>`).join("") || `<tr><td colspan=6 class="empty">No customers match.</td></tr>`;
+  document.querySelectorAll("tr.row").forEach((tr) => tr.onclick = () => show(tr.dataset.id));
+}
+
+function show(id) {
+  selected = id; render();
+  const c = DATA.customers.find((x) => x.id === id);
+  const maxImp = Math.max(...c.reasons.map((r) => r[2]), 0.01);
+  const facts = c.facts ? Object.entries(LABELS).filter(([k]) => c.facts[k] !== null && c.facts[k] !== undefined).map(([k, l]) => `<div><span class="muted">${l}</span><b>${typeof c.facts[k] === "boolean" ? (c.facts[k] ? "yes" : "no") : esc(c.facts[k])}</b></div>`).join("") : "";
+  const opts = c.options ? `<table class="small"><thead><tr><th>Offer</th><th class="num">Save rate</th><th class="num">Cost</th><th class="num">Expected value</th></tr></thead><tbody>${c.options.map((o) => `<tr${c.offer === o.offer ? ' style="font-weight:700"' : ""}><td>${esc(o.name)}</td><td class="num">${pct(o.save_rate)}</td><td class="num">$${o.cost}</td><td class="num">${money(o.expected_value)}</td></tr>`).join("")}</tbody></table><p class="muted small">Expected value = risk ${pct(c.p)} × save rate × 24-month margin $${c.clv.toFixed(0)} − cost. Save rates are assumptions until the first A/B test measures them.</p>` : "";
+  $("#detail").innerHTML = `<h2>${c.id} <span class="risk ${c.band}">${pct(c.p, 1)} risk of leaving in 60 days</span> <small>rank ${c.rank} of 2,000</small></h2>
+    <div class="detail">
+      <h3>Why (top drivers of this score)</h3>
+      ${c.reasons.map((r) => `<div><span class="cat c-${r[0]}">${r[0]}</span>${esc(r[1])}<div class="bar"><i style="width:${(100 * r[2] / maxImp).toFixed(0)}%"></i></div></div>`).join("") || '<p class="muted">No single driver stands out.</p>'}
+      <h3>Next best action</h3>
+      <p><b>${c.offer ? esc(DATA.offers[c.offer].name) : "No offer: a service check-in call only"}</b>${c.ev != null ? ` · expected value ${money(c.ev)}` : ""}</p>
+      ${opts}
+      ${facts ? `<h3>Account facts</h3><div class="facts">${facts}</div>` : '<p class="muted small">Detailed facts are shown for the 300 highest-risk customers.</p>'}
+      <h3>Call brief</h3>
+      <button class="btn" id="gen">Write call brief</button> <span class="muted small">The AI writes from the facts above; code checks numbers, offer and wording before showing it.</span>
+      <div id="briefOut"></div>
+    </div>`;
+  $("#gen").onclick = () => brief(c.id);
+}
+
+async function brief(id) {
+  const b = $("#gen"); b.disabled = true; b.textContent = "Writing…";
+  $("#briefOut").innerHTML = "";
+  try {
+    const r = await (await fetch("/api/brief", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ customer_id: id }) })).json();
+    const tag = r.status === "generated" ? `<span class="pill p-ok">AI-written · passed all checks</span>` : `<span class="pill p-warn">Rule-based brief</span>`;
+    const model = r.modelUsed ? `<span class="muted small">${esc(r.modelUsed.model)}${r.modelUsed.tier !== "primary" ? " (fallback)" : ""} · ${(r.latencyMs / 1000).toFixed(1)} s</span>` : "";
+    const x = r.brief || {};
+    $("#briefOut").innerHTML = `<div class="brief">${tag} ${model}
+      ${r.noteWithheld ? `<div class="note">The last ticket note contained instructions, so it was withheld from the AI.</div>` : ""}
+      ${r.guardrailNote ? `<div class="note">${esc(r.guardrailNote)}</div>` : ""}
+      <div class="k">Why they may leave</div><div>${esc(x.summary)}</div>
+      <div class="k">Talking points</div><ul>${(x.talking_points || []).map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+      <div class="k">Opening line</div><div>${esc(x.opening_line)}</div>
+      <div class="k">Offer</div><div>${x.offer_script ? esc(x.offer_script) : '<span class="muted">No offer: fix what you can on the call.</span>'}</div>
+      <div class="k">Follow-up SMS draft (agent sends, after the call)</div><div>${esc(x.sms_draft)}</div>
+      <div style="margin-top:10px;display:flex;gap:8px"><button class="btn ghost" onclick="this.parentNode.innerHTML='<span class=\\'pill p-info\\'>Marked as called (demo only, nothing is sent)</span>'">Mark as called</button></div></div>`;
+  } catch (e) {
+    $("#briefOut").innerHTML = `<div class="note">Could not reach the brief service.</div>`;
+  }
+  b.disabled = false; b.textContent = "Write call brief again";
+}
+
+function modelTab() {
+  const M = MODEL, r = M.rule_baseline, lr = M.logistic_regression, gb = M.gradient_boosting;
+  const row = (name, x, rule) => `<tr${M.chosen && name.toLowerCase().startsWith(M.chosen.split("_")[0]) ? ' style="font-weight:700"' : ""}><td>${name}</td><td class="num">${x.roc_auc}</td><td class="num">${rule ? "—" : x.pr_auc}</td><td class="num">${pct(rule ? r.precision : x.top10.precision)}</td><td class="num">${pct(rule ? r.recall : x.top10.recall)}</td><td class="num">${rule ? r.lift : x.top10.lift}×</td></tr>`;
+  const cal = M.calibration_test, w = 340, h = 150, mx = Math.max(...cal.map((c) => Math.max(c.predicted, c.actual))) * 1.1;
+  const bw = w / cal.length;
+  const calSvg = `<svg viewBox="0 0 ${w} ${h + 20}" width="100%" role="img" aria-label="Calibration: predicted vs actual churn by risk decile">${cal.map((c, i) => `<rect x="${i * bw + 3}" y="${h - h * c.actual / mx}" width="${bw / 2 - 3}" height="${h * c.actual / mx}" fill="#0f766e"><title>Actual ${pct(c.actual, 1)}</title></rect><rect x="${i * bw + bw / 2}" y="${h - h * c.predicted / mx}" width="${bw / 2 - 3}" height="${h * c.predicted / mx}" fill="#94a3b8"><title>Predicted ${pct(c.predicted, 1)}</title></rect><text x="${i * bw + bw / 2}" y="${h + 14}" text-anchor="middle">${i + 1}</text>`).join("")}</svg>`;
+  const top = M.global_drivers.slice(0, 10), tmax = top[0].mean_abs_shap;
+  const fair = Object.entries(M.fairness).map(([k, v]) => `<tr><td>${k.replace("_", " ")}</td><td class="num">${v.flag_rate_ratio}</td><td class="num">${(v.recall_gap * 100).toFixed(1)} pts</td><td class="num">${v.flag_rate_p_value}</td><td class="num">${v.recall_p_value}</td><td class="small">${k === "region" ? "Different: East and Central have weaker coverage, so more network-driven risk. Region stays out of the model; agents see the network reason and the network-fix offer." : (v.flag_rate_p_value >= 0.05 && v.recall_p_value >= 0.05 ? "No significant difference" : "Investigate")}</td></tr>`).join("");
+  $("#tab-model").innerHTML = `<div class="mgrid">
+    <div class="card"><h2>Model vs today's rule <small>tested on August customers, trained on June</small></h2><div class="mbody">
+      <table class="small"><thead><tr><th>Approach</th><th class="num">ROC AUC</th><th class="num">PR AUC</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">Lift</th></tr></thead><tbody>
+      ${row("Today's rule (contract ends ≤ 60 days or 2+ tickets)", r, true)}${row("Logistic regression", lr)}${row("Gradient boosting (calibrated)", gb)}</tbody></table>
+      <p class="small muted">Precision, recall and lift for the model rows are for the top ${pct(M.capacity)} by risk, the team's weekly call capacity; the rule flags ${pct(r.flagged_share)} of customers. August churn was ${pct(M.data.test.churn_rate, 1)} vs ${pct(M.data.train.churn_rate, 1)} in June: a price rise and a competitor promo the June model had never seen. The simpler model held up better, so it was chosen, then retrained on June + August for this week's scores.</p></div></div>
+    <div class="card"><h2>Calibration <small>actual (teal) vs predicted (grey) churn, by risk decile</small></h2><div class="mbody">${calSvg}
+      <p class="small muted">The June-trained model under-predicted August churn by about half: the market moved. Production is retrained monthly on the latest labelled cohort, and the call list uses rank (who is riskiest), which held up.</p></div></div>
+    <div class="card"><h2>What drives risk overall <small>mean |SHAP|, this week's scores</small></h2><div class="mbody">
+      ${top.map((d) => `<div class="small"><span class="cat c-${d.category}">${d.category}</span>${d.feature.replace(/_/g, " ")}<div class="bar"><i style="width:${(100 * d.mean_abs_shap / tmax).toFixed(0)}%"></i></div></div>`).join("")}</div></div>
+    <div class="card"><h2>Fairness check <small>August test, top 10% call list</small></h2><div class="mbody">
+      <table class="small"><thead><tr><th>Group</th><th class="num">Flag-rate ratio</th><th class="num">Recall gap</th><th class="num">p (flag)</th><th class="num">p (recall)</th><th>Reading</th></tr></thead><tbody>${fair}</tbody></table>
+      <p class="small muted">Excluded from the model: ${M.excluded_from_model.join(", ").replace(/_/g, " ")}. Chi-square tests on groups with 300+ customers.</p></div></div>
+  </div>`;
+}
+
+(async () => {
+  [DATA, MODEL] = await Promise.all([(await fetch("customers.json")).json(), (await fetch("model.json")).json()]);
+  health(); kpis(); filters(); render(); modelTab();
+  const first = DATA.customers.find((c) => c.call); if (first && innerWidth > 900) show(first.id);
+})();
+</script>
+</body>
+</html>

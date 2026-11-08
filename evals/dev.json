@@ -1,0 +1,212 @@
+[
+ {
+  "id": "dev-NC-300234",
+  "kind": "dev",
+  "customer_id": "NC-300234",
+  "offer": "billing_review",
+  "top_reason": "service"
+ },
+ {
+  "id": "dev-NC-301242",
+  "kind": "dev",
+  "customer_id": "NC-301242",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-300253",
+  "kind": "dev",
+  "customer_id": "NC-300253",
+  "offer": "network_fix",
+  "top_reason": "network"
+ },
+ {
+  "id": "dev-NC-301152",
+  "kind": "dev",
+  "customer_id": "NC-301152",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-301511",
+  "kind": "dev",
+  "customer_id": "NC-301511",
+  "offer": "billing_review",
+  "top_reason": "service"
+ },
+ {
+  "id": "dev-NC-301748",
+  "kind": "dev",
+  "customer_id": "NC-301748",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-300952",
+  "kind": "dev",
+  "customer_id": "NC-300952",
+  "offer": "network_fix",
+  "top_reason": "network"
+ },
+ {
+  "id": "dev-NC-301839",
+  "kind": "dev",
+  "customer_id": "NC-301839",
+  "offer": "none",
+  "top_reason": "contract"
+ },
+ {
+  "id": "dev-NC-301908",
+  "kind": "dev",
+  "customer_id": "NC-301908",
+  "offer": "billing_review",
+  "top_reason": "billing"
+ },
+ {
+  "id": "dev-NC-301727",
+  "kind": "dev",
+  "customer_id": "NC-301727",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-301067",
+  "kind": "dev",
+  "customer_id": "NC-301067",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-301130",
+  "kind": "dev",
+  "customer_id": "NC-301130",
+  "offer": "billing_review",
+  "top_reason": "billing"
+ },
+ {
+  "id": "dev-NC-300654",
+  "kind": "dev",
+  "customer_id": "NC-300654",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-301702",
+  "kind": "dev",
+  "customer_id": "NC-301702",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-300794",
+  "kind": "dev",
+  "customer_id": "NC-300794",
+  "offer": "billing_review",
+  "top_reason": "service"
+ },
+ {
+  "id": "dev-NC-301228",
+  "kind": "dev",
+  "customer_id": "NC-301228",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-300012",
+  "kind": "dev",
+  "customer_id": "NC-300012",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-300996",
+  "kind": "dev",
+  "customer_id": "NC-300996",
+  "offer": "billing_review",
+  "top_reason": "billing"
+ },
+ {
+  "id": "dev-NC-301435",
+  "kind": "dev",
+  "customer_id": "NC-301435",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-300692",
+  "kind": "dev",
+  "customer_id": "NC-300692",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-300244",
+  "kind": "dev",
+  "customer_id": "NC-300244",
+  "offer": "billing_review",
+  "top_reason": "billing"
+ },
+ {
+  "id": "dev-NC-300188",
+  "kind": "dev",
+  "customer_id": "NC-300188",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-301634",
+  "kind": "dev",
+  "customer_id": "NC-301634",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-301647",
+  "kind": "dev",
+  "customer_id": "NC-301647",
+  "offer": "billing_review",
+  "top_reason": "service"
+ },
+ {
+  "id": "dev-NC-301938",
+  "kind": "dev",
+  "customer_id": "NC-301938",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-301116",
+  "kind": "dev",
+  "customer_id": "NC-301116",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-301797",
+  "kind": "dev",
+  "customer_id": "NC-301797",
+  "offer": "billing_review",
+  "top_reason": "service"
+ },
+ {
+  "id": "dev-NC-300543",
+  "kind": "dev",
+  "customer_id": "NC-300543",
+  "offer": "loyalty_discount",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-301842",
+  "kind": "dev",
+  "customer_id": "NC-301842",
+  "offer": "none",
+  "top_reason": "price"
+ },
+ {
+  "id": "dev-NC-301266",
+  "kind": "dev",
+  "customer_id": "NC-301266",
+  "offer": "billing_review",
+  "top_reason": "price"
+ }
+]

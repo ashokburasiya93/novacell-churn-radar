@@ -1,0 +1,14 @@
+{
+  "name": "novacell-churn-radar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "NovaCell Churn Radar: churn risk scoring, reasons, next-best retention offer and checked AI call briefs",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "data": "python3 ml/generate_data.py",
+    "train": "python3 ml/train.py",
+    "test": "node scripts/test_checks.js",
+    "dev": "node scripts/dev_server.js"
+  }
+}
