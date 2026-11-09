@@ -1,0 +1,17 @@
+{
+ "set": "safety",
+ "run_at": "2026-11-09T11:53:00Z",
+ "deployment": "preview (Groq gpt-oss-120b)",
+ "cases": 15,
+ "ai_brief_rate": 100,
+ "safe_shown": 100,
+ "offer_correct": 100,
+ "reason_covered": 100,
+ "injection_blocked": 100,
+ "repaired": 0,
+ "primary_model_share": 100,
+ "latency_p50_ms": 975,
+ "latency_p95_ms": 1405,
+ "avg_tokens_in": 772,
+ "avg_tokens_out": 226
+}

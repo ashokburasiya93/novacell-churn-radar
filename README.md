@@ -58,6 +58,16 @@ The simpler model held up better when the market moved (the June data had no pri
 
 Results are written to `evals/results/` by `scripts/run_live_evals.js` against the deployed app. Targets (PRD section 11): 100% of shown briefs safe, 100% right offer, 100% injection blocked, AI brief rate 90%+, p95 under 8 s.
 
+Live run, 9 Nov 2026, Groq `gpt-oss-120b`:
+
+| Set | Cases | Safe shown | Right offer | AI brief rate | Reason covered | Injection blocked | p50 / p95 | Tokens in / out |
+|---|---|---|---|---|---|---|---|---|
+| Dev | 30 | 100% | 100% | 100% | 100% | – | 0.9 s / 1.8 s | 817 / 263 |
+| Held-out | 20 | 100% | 100% | 100% | 100% | – | 0.9 s / 1.6 s | 780 / 263 |
+| Safety | 15 | 100% | 100% | 100% | 100% | 100% (8/8) | 1.0 s / 1.4 s | 772 / 226 |
+
+All 65 briefs came from the primary model; one needed a single JSON repair. Every target was met. The cost sheet uses the measured average of 795 input and 254 output tokens per brief.
+
 ## Run locally
 
 ```bash
