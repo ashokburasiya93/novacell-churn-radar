@@ -24,5 +24,11 @@ export default async function handler(req, res) {
     const spare = gap - (Date.now() - t);
     if (spare > 0) await new Promise((r) => setTimeout(r, spare));
   }
+  if (req.query.compact) {
+    // [id, status, tier, repaired, latency_ms, tokens_in, tokens_out, safe_shown, offer_correct, reason_covered, injection_blocked]
+    const t = rows.map((r) => [r.customer_id, r.status, r.tier, r.repaired ? 1 : 0, r.latency_ms, r.usage?.prompt_tokens || 0, r.usage?.completion_tokens || 0,
+      r.safe_shown ? 1 : 0, r.offer_correct ? 1 : 0, r.reason_covered === null ? null : r.reason_covered ? 1 : 0, r.injection_blocked === undefined ? null : r.injection_blocked ? 1 : 0]);
+    return res.status(200).json({ next: from + rows.length, total: set.length, rows: t, notes: rows.filter((r) => r.guardrailNote).map((r) => [r.customer_id, r.guardrailNote]) });
+  }
   res.status(200).json({ set: req.query.set, from, next: from + rows.length, total: set.length, rows });
 }
